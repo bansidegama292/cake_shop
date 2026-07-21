@@ -1,0 +1,138 @@
+1.     
+	CREATE TABLE admin (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    fullname VARCHAR(100) DEFAULT NULL,
+    phone VARCHAR(20) DEFAULT NULL,
+    PRIMARY KEY (id),
+    KEY username (username),
+    KEY email (email)
+	);
+	
+2.
+       CREATE TABLE IF NOT EXISTS cakes (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    itemname VARCHAR(255) NOT NULL,
+    categories ENUM('Chocolate', 'Fruit', 'Bundt', 'Velvet', 'Celebration', 'Ice Cream', 'Cupcake', 'Roll', 'Pastry') NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    img VARCHAR(255) DEFAULT NULL,
+    description TEXT DEFAULT NULL,
+    stock INT(11) NOT NULL DEFAULT 0,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+	
+3.  
+	CREATE TABLE cake_images (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    cake_id INT(11) DEFAULT NULL,
+    image VARCHAR(255) DEFAULT NULL,
+    PRIMARY KEY (id),
+    KEY cake_id (cake_id),
+    CONSTRAINT fk_cake_images
+        FOREIGN KEY (cake_id)
+        REFERENCES cakes(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE);
+		
+4.  
+
+
+DROP TABLE IF EXISTS feedback;
+
+-- Create new feedback table with your required fields
+
+CREATE TABLE IF NOT EXISTS feedback (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    city VARCHAR(100) DEFAULT NULL,
+    mno VARCHAR(15) DEFAULT NULL,
+    email VARCHAR(150) NOT NULL,
+    feedback TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+	
+5.
+
+	CREATE TABLE IF NOT EXISTS users (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    address TEXT NULL,
+    city VARCHAR(100) NULL,
+    pincode VARCHAR(10) NULL,
+    state VARCHAR(100) NULL,
+    country VARCHAR(100) NULL,
+    username VARCHAR(100) NULL,
+    password VARCHAR(255) NOT NULL,
+    gender ENUM('Male', 'Female', 'Other') NULL,
+    mobileno VARCHAR(15) NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    dob DATE NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+6.
+
+
+	CREATE TABLE IF NOT EXISTS cart (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    user_id INT(11) NOT NULL,
+    product_id INT(11) NOT NULL,
+    itemname VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    quantity INT(11) NOT NULL DEFAULT 1,
+    total DECIMAL(10,2) NOT NULL,
+    img VARCHAR(255) DEFAULT NULL,
+    username VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES cakes(id) ON DELETE CASCADE
+);
+
+
+7. 	
+	CREATE TABLE orders (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    username VARCHAR(100),
+    total_amount DECIMAL(10,2) NOT NULL,
+    address TEXT NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    payment_method VARCHAR(50),
+    order_notes TEXT,
+    order_date DATETIME NOT NULL,
+    status VARCHAR(50) DEFAULT 'Pending',
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+8.  
+	CREATE TABLE order_items (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    itemname VARCHAR(255),
+    price DECIMAL(10,2),
+    quantity INT,
+    total DECIMAL(10,2),
+    img VARCHAR(255),
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+);
+
+
+9.   
+	-- Wishlist Table
+CREATE TABLE wishlist (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    product_id INT NOT NULL,
+    added_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES cakes(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_wishlist (user_id, product_id)
+);
+	

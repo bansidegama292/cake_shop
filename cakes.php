@@ -138,6 +138,34 @@ if ($user_id > 0) {
 <title>Cakes - Golden Crust</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<div class="page-bg">
+    <!-- Floating Blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+    <div class="bg-blob blob-4"></div>
+    <div class="bg-blob blob-5"></div>
+    
+    <!-- Floating Icons -->
+    <div class="float-icon icon-1">🧁</div>
+    <div class="float-icon icon-2">🎂</div>
+    <div class="float-icon icon-3">🍰</div>
+    <div class="float-icon icon-4">🧇</div>
+    <div class="float-icon icon-5">🍩</div>
+    <div class="float-icon icon-6">🥧</div>
+    <div class="float-icon icon-7">🍪</div>
+    <div class="float-icon icon-8">🧁</div>
+    
+    <!-- Sparkles -->
+    <div class="sparkle s1"></div>
+    <div class="sparkle s2"></div>
+    <div class="sparkle s3"></div>
+    <div class="sparkle s4"></div>
+    <div class="sparkle s5"></div>
+    <div class="sparkle s6"></div>
+    <div class="sparkle s7"></div>
+    <div class="sparkle s8"></div>
+</div>
 
 <!-- ==========================================
    CSS INCLUDE - cakes.css

@@ -1,0 +1,308 @@
+/* ===== INVOICE PRINT CSS ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: white;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invoice-print-wrapper {
+    max-width: 750px;
+    width: 100%;
+    background: white;
+    border-radius: 16px;
+    padding: 35px 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    border: 1px solid #f0ebe6;
+}
+
+/* ===== HEADER ===== */
+.invoice-print-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #f0ebe6;
+    margin-bottom: 25px;
+}
+
+.invoice-print-header .brand h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #2d1b12;
+}
+
+.invoice-print-header .brand h1 i {
+    color: #d63384;
+    margin-right: 8px;
+}
+
+.invoice-print-header .brand p {
+    font-size: 12px;
+    color: #888;
+    margin-top: -3px;
+}
+
+.invoice-print-header .invoice-id h2 {
+    font-size: 22px;
+    color: #d63384;
+    font-weight: 700;
+}
+
+.invoice-print-header .invoice-id span {
+    font-size: 12px;
+    color: #888;
+    display: block;
+    text-align: right;
+}
+
+/* ===== INFO ===== */
+.print-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0ebe6;
+}
+
+.print-info-grid h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.print-info-grid h4 i {
+    margin-right: 6px;
+}
+
+.print-info-grid p {
+    font-size: 14px;
+    color: #2d1b12;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge.pending { background: #fff3e0; color: #e65100; }
+.badge.processing { background: #e3f2fd; color: #0d47a1; }
+.badge.shipped { background: #f3e5f5; color: #4a148c; }
+.badge.delivered { background: #e8f5e9; color: #1b5e20; }
+.badge.cancelled { background: #fce4ec; color: #b71c1c; }
+
+/* ===== ITEMS ===== */
+.print-items {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.print-items thead th {
+    text-align: left;
+    padding: 10px 0;
+    border-bottom: 2px solid #f0ebe6;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.print-items tbody td {
+    padding: 10px 0;
+    border-bottom: 1px solid #f5f0eb;
+    font-size: 14px;
+    color: #2d1b12;
+    font-weight: 400;
+}
+
+.print-items tbody td:last-child {
+    font-weight: 600;
+    color: #d63384;
+}
+
+/* ===== TOTALS ===== */
+.print-totals {
+    background: #faf8f6;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+}
+
+.print-totals .total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 14px;
+    color: #555;
+    font-weight: 400;
+}
+
+.print-totals .total-row .free {
+    color: #2e7d32;
+    font-weight: 600;
+}
+
+.print-totals .total-row.grand {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d1b12;
+    padding-top: 10px;
+    border-top: 2px solid #e0d6ce;
+    margin-top: 5px;
+}
+
+.print-totals .total-row.grand .amount {
+    color: #d63384;
+}
+
+.print-totals .payment-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    margin-top: 10px;
+    border-top: 1px solid #f0ebe6;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.print-totals .payment-row .status {
+    font-weight: 600;
+}
+
+.print-totals .payment-row .status.paid {
+    color: #2e7d32;
+}
+
+.print-totals .payment-row .status.pending {
+    color: #e65100;
+}
+
+.print-totals .payment-row .status i {
+    margin-right: 5px;
+}
+
+.print-totals .notes {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #f0ebe6;
+    font-size: 13px;
+    color: #888;
+    font-weight: 400;
+}
+
+.print-totals .notes span {
+    font-weight: 500;
+    color: #555;
+}
+
+/* ===== FOOTER ===== */
+.print-footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 2px solid #f0ebe6;
+}
+
+.print-footer .thanks {
+    font-size: 16px;
+    font-weight: 600;
+    color: #d63384;
+    margin-bottom: 3px;
+}
+
+.print-footer p {
+    font-size: 12px;
+    color: #888;
+    font-weight: 400;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    body {
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .invoice-print-wrapper {
+        max-width: 100% !important;
+        padding: 25px 30px !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+    
+    .invoice-print-header {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .badge {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .print-totals {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .invoice-print-wrapper {
+        padding: 20px;
+    }
+    
+    .invoice-print-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .invoice-print-header .invoice-id span {
+        text-align: center;
+    }
+    
+    .print-info-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .print-items thead th,
+    .print-items tbody td {
+        font-size: 12px;
+        padding: 6px 0;
+    }
+    
+    .print-totals .total-row.grand {
+        font-size: 16px;
+    }
+    
+    .print-totals .payment-row {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+}

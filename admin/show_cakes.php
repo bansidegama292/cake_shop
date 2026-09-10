@@ -12,11 +12,11 @@ if (!$conn) {
     die("Database Connection Failed : " . mysqli_connect_error());
 }
 
-// ===== DELETE CAKE =====
+// ===== DELETE CAKE (With Image File Deletion Fix) =====
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     
-    // Get image name to delete file
+    // Get main image name to delete file
     $img_query = mysqli_query($conn, "SELECT img FROM cakes WHERE id = '$id'");
     $img_row = mysqli_fetch_assoc($img_query);
     
@@ -43,11 +43,11 @@ if (isset($_GET['delete'])) {
     mysqli_query($conn, "DELETE FROM cakes WHERE id = '$id'");
     
     echo "<script>alert('Cake deleted successfully!');window.location='show_cakes.php';</script>";
+    exit();
 }
 
 // ===== GET ALL CAKES =====
 $query = "SELECT * FROM cakes ORDER BY id DESC";
-
 $result = mysqli_query($conn, $query);
 $total_cakes = mysqli_num_rows($result);
 
@@ -89,7 +89,6 @@ if(isset($_GET['msg'])){
             min-height: 100vh;
         }
 
-        /* ===== MAIN CONTENT - SAME AS SIDEBAR ===== */
         .main {
             margin-left: 85px;
             padding: 30px;
@@ -213,7 +212,6 @@ if(isset($_GET['msg'])){
             font-size: 15px;
         }
 
-        /* ===== ITEM IMAGE ===== */
         .item-img {
             width: 70px;
             height: 70px;
@@ -311,14 +309,12 @@ if(isset($_GET['msg'])){
             box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
         }
 
-        /* ===== SERIAL NUMBER ===== */
         .serial-number {
             font-weight: 700;
             color: #e8436e;
             font-size: 16px;
         }
 
-        /* ===== PRODUCT NAME ===== */
         .product-name {
             font-weight: 600;
             color: #1a0f17;
@@ -359,13 +355,11 @@ if(isset($_GET['msg'])){
             margin-top: 10px;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
             .main {
                 margin-left: 75px;
                 padding: 20px;
             }
-            
             .main.shift {
                 margin-left: 240px;
             }
@@ -376,35 +370,28 @@ if(isset($_GET['msg'])){
                 margin-left: 0;
                 padding: 70px 15px 15px 15px;
             }
-            
             .main.shift {
                 margin-left: 0;
             }
-
             .page-header .title {
                 font-size: 24px;
             }
-
             table {
                 font-size: 13px;
                 min-width: 700px;
             }
-
             tbody td {
                 padding: 12px 12px;
                 font-size: 13px;
             }
-
             .item-img, .item-img-placeholder {
                 width: 50px;
                 height: 50px;
             }
-            
             .btn-action {
                 padding: 6px 12px;
                 font-size: 12px;
             }
-            
             .price-text {
                 font-size: 15px;
             }
@@ -415,17 +402,14 @@ if(isset($_GET['msg'])){
                 flex-direction: column;
                 align-items: stretch;
             }
-
             .btn-add {
                 justify-content: center;
                 font-size: 14px;
                 padding: 10px 20px;
             }
-
             .action-btns {
                 flex-direction: column;
             }
-
             .btn-action {
                 justify-content: center;
             }
@@ -468,8 +452,11 @@ if(isset($_GET['msg'])){
                         <tr>
                             <td class="serial-number"><?php echo $sr++; ?></td>
                             <td>
-                                <?php if(!empty($row['img'])): ?>
-                                    <img src="uploads/<?php echo $row['img']; ?>" alt="<?php echo $row['itemname']; ?>" class="item-img">
+                                <?php 
+                                // FIX: Image checking logic improved
+                                $img_path = "uploads/" . $row['img'];
+                                if(!empty($row['img']) && file_exists($img_path)): ?>
+                                    <img src="<?php echo $img_path; ?>" alt="<?php echo htmlspecialchars($row['itemname']); ?>" class="item-img">
                                 <?php else: ?>
                                     <div class="item-img-placeholder">
                                         <i class="fas fa-cake"></i>

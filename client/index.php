@@ -9,75 +9,6 @@ ini_set('display_errors', 1);
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
 
-<!-- ===== ADDITIONAL FIXES ===== -->
-<style>
-/* Coverflow Card Size Increased */
-.cover-card {
-    width: 320px !important;
-    height: 400px !important;
-}
-
-/* Remove white bottom part from cover cards */
-.cover-card .cover-info,
-.cover-card .info-text {
-    display: none !important;
-}
-
-/* Make images fill entire card */
-.cover-card img {
-    height: 100% !important;
-    object-fit: cover !important;
-}
-
-/* Featured Cake Image Wrapper - Increased */
-.cake-image-wrapper {
-    height: 300px !important;
-}
-
-/* Fix white space at bottom */
-body, html {
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height: 100vh !important;
-}
-
-.cta {
-    margin-bottom: 0 !important;
-}
-
-/* Responsive adjustments */
-@media (max-width: 992px) {
-    .cover-card {
-        width: 240px !important;
-        height: 320px !important;
-    }
-    .cover-card.left { transform: translateX(-160px) scale(0.8) !important; }
-    .cover-card.right { transform: translateX(160px) scale(0.8) !important; }
-}
-
-@media (max-width: 768px) {
-    .cover-card {
-        width: 200px !important;
-        height: 260px !important;
-    }
-    .cake-image-wrapper {
-        height: 220px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .cover-card {
-        width: 160px !important;
-        height: 210px !important;
-    }
-    .cover-card.left { transform: translateX(-100px) scale(0.7) !important; }
-    .cover-card.right { transform: translateX(100px) scale(0.7) !important; }
-    .cake-image-wrapper {
-        height: 180px !important;
-    }
-}
-</style>
-
 <div class="page-bg">
     <!-- Floating Blobs -->
     <div class="bg-blob blob-1"></div>
@@ -375,9 +306,11 @@ body, html {
 
     <div class="team-grid">
 
-        <div class="team-card reveal-up">
-            <div class="team-avatar" style="background:linear-gradient(135deg,#ff6b9d,#e8557a);">
-                <span>R</span>
+        <!-- Team Card 1 -->
+          <div class="team-card reveal-up" style="animation-delay: 0.1s;">
+        
+            <div class="team-avatar">
+                <img src="images/bg/riddhi.jpeg" alt="Sasiya Riddhi">
             </div>
             <h3>Sasiya Riddhi</h3>
             <p class="team-role">Head Baker & Founder</p>
@@ -391,9 +324,11 @@ body, html {
             <div class="card-hover-line"></div>
         </div>
 
+        <!-- Team Card 2 (Image Set) -->
         <div class="team-card reveal-up" style="animation-delay: 0.1s;">
-            <div class="team-avatar" style="background:linear-gradient(135deg,#ff9eb5,#ffb6c9);">
-                <span>B</span>
+        
+            <div class="team-avatar">
+                <img src="images/bg/bansi.jpeg" alt="Degama Bansi">
             </div>
             <h3>Degama Bansi</h3>
             <p class="team-role">Cake Designer</p>
@@ -407,9 +342,10 @@ body, html {
             <div class="card-hover-line"></div>
         </div>
 
+        <!-- Team Card 3 -->
         <div class="team-card reveal-up" style="animation-delay: 0.2s;">
-            <div class="team-avatar" style="background:linear-gradient(135deg,#ffb0c3,#ffc1d0);">
-                <span>R</span>
+            <div class="team-avatar">
+                <img src="images/bg/riya.jpeg" alt="Rathod Riya">
             </div>
             <h3>Rathod Riya</h3>
             <p class="team-role">Flavor Specialist</p>

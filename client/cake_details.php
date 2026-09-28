@@ -124,7 +124,6 @@ href="style.css">
 
 <body>
 
-<!--================ NAVBAR ================-->
 
 <header class="navbar">
 
@@ -142,9 +141,7 @@ href="style.css">
 
         <a href="contact.php">Contact</a>
 
-        <a href="cart.php">
-            🛒 Cart
-        </a>
+        <a href="cart.php">🛒 Cart</a>
 
     </nav>
 
@@ -164,8 +161,6 @@ href="style.css">
 
 </section>
 
-
-
 <!--================ SEARCH BAR ================-->
 
 <section class="search-section">
@@ -179,25 +174,18 @@ placeholder="Search delicious cakes..."
 value="<?php echo htmlspecialchars($search); ?>">
 
 <?php
-if($category!="All"){
+    if($category!="All"){
+    ?>
+    <input
+    type="hidden"
+    name="category"
+    value="<?php echo $category; ?>">
+    <?php
+    }
 ?>
-<input
-type="hidden"
-name="category"
-value="<?php echo $category; ?>">
-<?php
-}
-?>
-
-<button type="submit">
-Search
-</button>
-
+<button type="submit">Search</button>
 </form>
-
 </section>
-
-
 
 <!--================ CATEGORY BUTTONS ================-->
 
@@ -232,17 +220,12 @@ Velvet
 class="<?php if($category=="Celebration") echo 'active'; ?>">
 Celebration
 </a>
-
 </section>
-
-
 
 <!--================ PRODUCTS ================-->
 
 <section class="cakes">
-
 <div class="cake-container">
-
 <?php
 
 if(mysqli_num_rows($result)>0){

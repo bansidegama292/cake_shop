@@ -26,7 +26,7 @@ $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 
 // ----- IMAGE PATH -----
-$image_folder = "/golden_crust_cake_shop/project/uploads/project_image/";
+$image_folder ="/Golden_Crust/project/admin/uploads/";
 
 // ====== PAGINATION ======
 $limit = 5;
@@ -99,7 +99,6 @@ if (isset($_GET['cancel_order'])) {
 }
 
 // ====== DO NOT CLOSE CONNECTION HERE ======
-// mysqli_close($conn);   <-- REMOVE THIS LINE
 
 ?>
 <!DOCTYPE html>
@@ -132,7 +131,7 @@ if (isset($_GET['cancel_order'])) {
     <div class="orders-list">
         <?php if (mysqli_num_rows($orders_result) > 0): ?>
             <?php while ($order = mysqli_fetch_assoc($orders_result)): 
-                // Fetch items for this order – connection is still open
+                
                 $items_query = "SELECT * FROM order_items WHERE order_id = " . $order['id'];
                 $items_res = mysqli_query($conn, $items_query);
                 $items = [];

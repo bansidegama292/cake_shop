@@ -16,7 +16,7 @@ if ($user_id == 0) {
 }
 
 // Get user details
-// FIX: 'phone as mobileno' ne kaadhi nakhyu, karan ke DB ma khali 'mobileno' column chhe.
+
 $stmt = mysqli_prepare($conn, "SELECT username, email, mobileno, address FROM users WHERE id = ?");
 
 if (!$stmt) {
@@ -62,7 +62,7 @@ if (isset($_POST['place_order'])) {
     // Get form data
     $address = mysqli_real_escape_string($conn, $_POST['address'] ?? $user['address'] ?? '');
     
-    // FIX: Form ma name="phone" chhe, pan database array ma 'mobileno' chhe.
+    
     $phone = mysqli_real_escape_string($conn, $_POST['phone'] ?? $user['mobileno'] ?? '');
     
     $payment_method = mysqli_real_escape_string($conn, $_POST['payment_method'] ?? 'COD');
@@ -98,10 +98,9 @@ if (isset($_POST['place_order'])) {
         $order_date = date('Y-m-d H:i:s');
         $status = $payment_status; 
         
-        // FIX: Database ma 'payment_status' column chhe, etle te insert query ma add karyu.
         $stmt = mysqli_prepare($conn, "INSERT INTO orders (user_id, username, total_amount, address, phone, payment_method, order_notes, order_date, status, payment_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
-        // FIX: Bind param types "isdsssssss" (10 variables mate 10 characters, payment_status mate ek extra 's' add karyu)
+        
         mysqli_stmt_bind_param($stmt, "isdsssssss", 
             $user_id,            // i - Integer
             $user['username'],   // s - String

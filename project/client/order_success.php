@@ -42,7 +42,7 @@ if (!$order) {
 $user_id = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : 0;
 $user = null;
 if ($user_id > 0) {
-    // FIX: 'phone' ne badle 'mobileno' karyu chhe karan ke DB ma te naam chhe
+    
     $stmt = mysqli_prepare($conn, "SELECT username, email, mobileno FROM users WHERE id = ?");
     mysqli_stmt_bind_param($stmt, "i", $user_id);
     mysqli_stmt_execute($stmt);
@@ -99,11 +99,11 @@ if (isset($_GET['continue_shopping'])) {
     exit();
 }
 
-// Calculate delivery date
+
 $delivery_date = date('l, F j, Y', strtotime($order['order_date'] . ' + 3 days'));
 $delivery_estimate = date('M j', strtotime($order['order_date'] . ' + 2 days')) . ' - ' . date('M j', strtotime($order['order_date'] . ' + 4 days'));
 
-// FIX: Status Icons Array Define karyu (Jo pahela thi na hoy to)
+
 $status_icons = [
     'Pending' => 'fa-clock',
     'Processing' => 'fa-spinner',
@@ -112,14 +112,14 @@ $status_icons = [
     'Cancelled' => 'fa-times-circle'
 ];
 
-// FIX: Payment Method Icons Array Define karyu
+
 $method_icons = [
     'COD' => 'fa-money-bill-wave',
     'Online' => 'fa-credit-card',
     'UPI' => 'fa-mobile-alt'
 ];
 
-// FIX: Payment Method Colors Array Define karyu
+
 $method_colors = [
     'COD' => '#f57c00',
     'Online' => '#1976d2',
@@ -229,7 +229,7 @@ $method_colors = [
                 <div class="summary-item">
                     <div class="item-image">
                         <?php if (!empty($item['img'])): ?>
-                            <img src="/golden_crust/project/uploads/project_image/<?php echo htmlspecialchars($item['img']); ?>" alt="<?php echo htmlspecialchars($item['itemname']); ?>">
+                            <img src="/Golden_Crust/project/admin/uploads/<?php echo htmlspecialchars($item['img']); ?>" alt="<?php echo htmlspecialchars($item['itemname']); ?>">
                         <?php else: ?>
                             <div class="item-placeholder"><i class="fas fa-cake"></i></div>
                         <?php endif; ?>
@@ -356,7 +356,7 @@ function createConfetti() {
 
 // ===== PRINT RECEIPT FUNCTION =====
 function printReceipt() {
-    // Open invoice in new window and print
+    
     var orderId = <?php echo $order['id']; ?>;
     var printWindow = window.open('invoice.php?order_id=' + orderId, '_blank', 'width=800,height=600');
     printWindow.onload = function() {
@@ -367,6 +367,6 @@ function printReceipt() {
 }
 </script>
 
-<?php include 'includes/footer.php'; ?>
+
 </body>
 </html>

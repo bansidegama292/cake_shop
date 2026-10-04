@@ -17,9 +17,9 @@ $error = "";
 // ----- PROCESS LOGIN -----
 if(isset($_POST['login'])){
     $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = $_POST['password']; // Plain text password
+    $password = $_POST['password']; 
     
-    // Check if user exists with plain text password comparison
+   
     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
     
@@ -36,8 +36,8 @@ if(isset($_POST['login'])){
         // Close connection
         mysqli_close($conn);
         
-        // Redirect to profile page
-        header("Location: profile.php");
+        
+        header("Location: index.php");
         exit();
     } else {
         $error = "❌ Invalid username or password!";
@@ -58,7 +58,7 @@ mysqli_close($conn);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet" />
-  <!-- separate CSS file: login.css -->
+ 
   <link rel="stylesheet" href="css/login.css" />
 </head>
 <body>

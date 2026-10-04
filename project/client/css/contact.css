@@ -2,7 +2,7 @@
    CONTACT PAGE SPECIFIC CSS
    ================================================================ */
 
-/* floating soft circles */
+
 body::before {
     content: "";
     position: fixed;
@@ -100,7 +100,7 @@ body::after {
 }
 
 /* ================================================================
-   CONTACT CONTAINER (FORM + MAP SIDE BY SIDE)
+   CONTACT CONTAINER 
    ================================================================ */
 .contact-container {
     width: 90%;

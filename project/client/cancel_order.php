@@ -29,7 +29,7 @@ if ($order_id > 0) {
     if ($order) {
         // Check if order is pending (only pending orders can be cancelled)
         if (strtolower($order['status']) == 'pending') {
-            // Update order status to cancelled
+            
             $update_stmt = mysqli_prepare($conn, "UPDATE orders SET status = 'cancelled' WHERE id = ? AND user_id = ?");
             mysqli_stmt_bind_param($update_stmt, "ii", $order_id, $user_id);
             

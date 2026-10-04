@@ -38,7 +38,7 @@ if (!$order) {
 $user_id = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : 0;
 $user = null;
 if ($user_id > 0) {
-    // FIX: 'phone' ne badle 'mobileno' karyu chhe karan ke DB ma te naam chhe
+    
     $stmt = mysqli_prepare($conn, "SELECT username, email, mobileno FROM users WHERE id = ?");
     mysqli_stmt_bind_param($stmt, "i", $user_id);
     mysqli_stmt_execute($stmt);

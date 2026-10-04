@@ -1,6 +1,4 @@
-/* ================================================================
-   CAKES PAGE - COMPLETE CSS
-   ================================================================ */
+
 
 /* ================================================================
    BACKGROUND WITH MOVEMENT (From Home Page)
@@ -300,7 +298,7 @@
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    object-fit: contain; /* ✅ contain - Image full visible, cut nai thase */
+    object-fit: contain; 
     object-position: center;
     background: #fce4ec;
     padding: 10px;
@@ -873,7 +871,6 @@
         padding: 4px 8px;
     }
 
-    /* ✅ Smallest screen - contain (cut nai thase) */
     .cake-image-wrapper {
         padding-top: 65%;
     }

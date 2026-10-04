@@ -27,7 +27,7 @@ if (!$order) {
 $items_query = "SELECT * FROM order_items WHERE order_id = $order_id";
 $items_res = mysqli_query($conn, $items_query);
 
-$image_folder = "/golden_crust_cake_shop/project/uploads/project_image/";
+$image_folder = "/Golden_Crust/project/admin/uploads/";
 
 // Output HTML
 ?>
